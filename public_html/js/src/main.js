@@ -1,5 +1,5 @@
 var ol3_layers = new Array();
-var map_main;
+var _map;
 var main_view;
 var layercanvas;
 
@@ -9,27 +9,7 @@ function runApp(){
 	initLayers();
 	initMap();
 	$(window).resize(resizeMaps);
-	testREST();
-}
-
-function testREST(){
-	d3.json("http://api.labcd.mx/v1/movilidad/estaciones-ecobici",
-			function(error,json){
-				console.log(json); 
-				if(error){
-					console.log("ERROR: "+error); 
-				}
-			});
-	return; 
-	$.ajax({
-		url: "http://api.labcd.mx/v1/movilidad/estaciones-ecobici",
-		success: function (data) {
-			console.log(data); },
-		error: function(error){
-			console.log("ERROR: "+error); },
-		type: "get",
-		dataType: 'json'
-	});
+	var coord = readData();
 }
 
 function initMap(){
@@ -56,7 +36,7 @@ function initMap(){
 		html: "<a href='https://olmozavala.com'>Olmo Zavala</a>"
 	});
 	
-	map_main = new ol.Map({
+	_map = new ol.Map({
 		controls: ol.control.defaults().extend([
 			new ol.control.ScaleLine({
 				units: 'degrees'
