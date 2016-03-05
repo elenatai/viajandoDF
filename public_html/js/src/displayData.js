@@ -1,17 +1,12 @@
 function displayData(geoJSONdata, layerId, visible) {
-	
-	var data = geoJSONdata.features;//Reads the data
-	//Reads the projection of the layer from the returned JSON data
-	var projection = geoJSONdata.crs.type+":"+geoJSONdata.crs.properties.name;
-	
-	//Creates the vector source from the data and the projection
+	var format = new ol.format.GeoJSON();
 	var vectorSource = new ol.source.Vector({
-		features: data ,
-		format: new ol.format.GeoJSON()});
+		features: format.readFeatures(geoJSONdata,
+					{featureProjection: 'EPSG:4326'})
+			});
 
 	var currLayer = new ol.layer.Vector( { 
-		source: vectorSource,
-		style: styles.Point}); 
+		source: vectorSource }); 
 
 	_map.addLayer(currLayer);
 	_map.render();

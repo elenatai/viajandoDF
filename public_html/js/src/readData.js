@@ -6,18 +6,7 @@
 
 globalCallback = function(geoJSON){ 
 	console.log("Inside CALLBACK");
-
-	var format = new ol.format.GeoJSON();
-	var vectorSource = new ol.source.Vector({
-		features: format.readFeatures(geoJSON,
-					{featureProjection: 'EPSG:4326'})
-			});
-
-	var currLayer = new ol.layer.Vector( { 
-		source: vectorSource }); 
-
-	_map.addLayer(currLayer);
-	_map.render();
+	displayData(geoJSON);
 };
 
 function readData(){
