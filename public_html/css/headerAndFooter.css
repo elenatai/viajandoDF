@@ -1,0 +1,13 @@
+/* 
+    Created on : Apr 15, 2014, 12:21:15 PM
+    Author     : olmozavala
+*/
+/* line 7, ../scss/headerAndFooter.scss */
+.navbar-brand {
+  height: 100%;
+}
+
+/* line 12, ../scss/headerAndFooter.scss */
+footer p {
+  text-align: center;
+}

@@ -1,0 +1,111 @@
+{
+ "cursor": "CkkKDwoIcG9zaXRpb24SAwiSARIyahBzfm1hcGF0b24tcHVibGljch4LEhFTbmFwcGVkVHJhaWxQb2ludBiAgIDk2YDmCAwYACAA",
+ "points": [
+  {
+   "location": {
+    "latitude": 19.392812276731,
+    "longitude": -99.17324158446604,
+    "radius": 20.0
+   },
+   "position": 12
+  },
+  {
+   "location": {
+    "latitude": 19.39280057163113,
+    "longitude": -99.17712137799886,
+    "radius": 20.0
+   },
+   "position": 19
+  },
+  {
+   "location": {
+    "latitude": 19.3910323,
+    "longitude": -99.1917229,
+    "radius": 20.0
+   },
+   "position": 45
+  },
+  {
+   "location": {
+    "latitude": 19.39000793992452,
+    "longitude": -99.19291483986903,
+    "radius": 20.0
+   },
+   "position": 48
+  },
+  {
+   "location": {
+    "latitude": 19.390556724515623,
+    "longitude": -99.19930327578786,
+    "radius": 20.0
+   },
+   "position": 57
+  },
+  {
+   "location": {
+    "latitude": 19.39065618060116,
+    "longitude": -99.20199660786051,
+    "radius": 20.0
+   },
+   "position": 63
+  },
+  {
+   "location": {
+    "latitude": 19.390072583816906,
+    "longitude": -99.20960386346292,
+    "radius": 20.0
+   },
+   "position": 73
+  },
+  {
+   "location": {
+    "latitude": 19.387437246226806,
+    "longitude": -99.22208797929365,
+    "radius": 20.0
+   },
+   "position": 90
+  },
+  {
+   "location": {
+    "latitude": 19.379132082949063,
+    "longitude": -99.24666879807842,
+    "radius": 20.0
+   },
+   "position": 109
+  },
+  {
+   "location": {
+    "latitude": 19.3789058,
+    "longitude": -99.24806079999999,
+    "radius": 20.0
+   },
+   "position": 110
+  },
+  {
+   "location": {
+    "latitude": 19.377693079527685,
+    "longitude": -99.25153663726633,
+    "radius": 20.0
+   },
+   "position": 114
+  },
+  {
+   "location": {
+    "latitude": 19.36177285612866,
+    "longitude": -99.27800796029956,
+    "radius": 20.0
+   },
+   "position": 140
+  },
+  {
+   "location": {
+    "latitude": 19.36029237518319,
+    "longitude": -99.27979755559345,
+    "radius": 20.0
+   },
+   "position": 146
+  }
+ ],
+ "kind": "dashboardAPI#resourcesItem",
+ "etag": "\"SYqucoTX53UfKvGy9awhyF4QHSs/UZFoIBVn13wmT92lGToyI6KQEhQ\""
+}
