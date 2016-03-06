@@ -1,3 +1,4 @@
+
 var ol3_layers = new Array();
 var _map;
 var main_view;
@@ -5,13 +6,45 @@ var layercanvas;
 
 var current_requests = new Array();
 
+function geoLocation(){
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(centerMap);
+	} else {
+		x.innerHTML = "Geolocation is not supported by this browser.";
+	}
+}
+
+function centerMap(position){
+	var view = _map.getView();
+	var coordsObj = position.coords;
+	var coords =  [coordsObj.longitude, coordsObj.latitude];
+	view.setCenter(coords);
+	view.setZoom(14);
+
+	var tempSource = new ol.source.Vector({
+		features: [new ol.Feature({
+			geometry: new ol.geom.Point(coords)
+					}) ]
+				});
+
+	var currLayer = new ol.layer.Vector({ 
+		source:tempSource ,
+		style: new ol.style.Style({
+			image: new ol.style.Icon({
+				src:"http://98.230.117.107:8383/viajandoDF/public_html/logos/Android.png"
+				}) })
+	});
+	
+	_map.addLayer(currLayer);
+	_map.render();
+}
 
 function runApp(){
 	initLayers();
 	initMap();
 	$(window).resize(resizeMaps);
 	readDataMapa();
-
+	geoLocation();
 }
 
 function initMap(){
