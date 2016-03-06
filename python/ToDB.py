@@ -30,7 +30,7 @@ def insertInto(fileName,table,cols):
 
     cur = conn.cursor();
 
-    sql = "DELETE FROM "+table+" WHERE true"
+    sql = "DELETE FROM "+table+" WHERE true ";
     print sql
     cur.execute(sql);
 
@@ -41,20 +41,19 @@ def insertInto(fileName,table,cols):
         for line in f:
             vals = line[:-1].split(',')
             vals = fixValues(vals)
-            print vals
             sql = "INSERT INTO "+table+" ("+ ",".join(cols) +") VALUES (" +",".join(vals)+ ")"
-            print sql
-            cur.execute(sql);
+            try:
+                cur.execute(sql);
+            except ValueError:
+                print sql
+
             i = i + 1
-            if i > 10:
-                break
 
     conn.commit()
     conn.close()
 
 def fixValues(vals):
     i = 0 
-    print vals
     for val in vals:
 
         if vals[i] == '':
@@ -63,10 +62,8 @@ def fixValues(vals):
             try:
                 temp = unicode(val)
                 if(temp.isnumeric()):
-                    #print "Is number"
                     vals[i] = vals[i]
                 else:
-                    #rint "Is not number"
                     vals[i] = "\'"+vals[i]+"\'"
             except ValueError:
                     vals[i] = "\'"+vals[i]+"\'"
@@ -75,18 +72,52 @@ def fixValues(vals):
 
     return vals
 
+def initGeoTables():
+    #For Posgresql only
+    try: 
+        conn = psycopg2.connect("dbname='viajandodf' user='olmozavala' host='98.230.117.107' password='sopasperico'")
+    except:
+        print "Failed to connect to database"
+
+    cur = conn.cursor();
+
+    sql = "ALTER TABLE cam_shapes ADD column geog geography(POINT,4326)";
+    cur.execute(sql);
+    print sql;
+    sql = "ALTER TABLE cam_stops ADD column geog geography(POINT,4326)";
+    cur.execute(sql);
+    print sql;
+    sql = "ALTER TABLE cam_routes ADD column geog geography(LINESTRING,4326)";
+    cur.execute(sql);
+    print sql;
+    sql = "UPDATE cam_shapes SET geog = ST_GeogFromText('SRID=4326;POINT('|| shape_pt_lat ||' '|| shape_pt_lon ||')')";
+    cur.execute(sql);
+    print sql;
+    sql = "UPDATE cam_stops SET geog = ST_GeogFromText('SRID=4326;POINT('|| stop_lat ||' '|| stop_lon ||')')";
+    cur.execute(sql);
+    print sql;
+
+    conn.commit()
+    conn.close()
 
 if __name__ == "__main__":
     print "***************************************************************\n"
     folder = '../capas/mapatonGTFS'
-    files = filesInDir(folder)
+    #files = filesInDir(folder)
+    files = ['calendar.txt','fare_attributes.txt','routes.txt','shapes.txt',
+                'stops.txt','fare_rules.txt','trips.txt','stop_times.txt']
+    initGeo = True;
+    loadData = False;
 
-    for currF in files:
-        if ".txt" in currF:
-            fileWithPath= folder+'/'+currF
+    if initGeo:
+        initGeoTables()
+
+    if loadData:
+        for currF in files:
+            if ".txt" in currF:
+                fileWithPath= folder+'/'+currF
             print "\n\n *********** Importing file: ",fileWithPath
             cols = readFile(fileWithPath)
             table = "cam_"+currF[0:-4]
             insertInto(fileWithPath, table, cols)
 
-    #postgresqlExamle();

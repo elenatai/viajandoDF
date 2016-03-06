@@ -31,3 +31,9 @@ var stylesRutasMetro = {'ruta1': new ol.style.Style({
 				width: 2
 			}) }) 
 			};
+
+var stylesRutasCamion = {'camion': new ol.style.Style({
+			 stroke: new ol.style.Stroke({
+				color: '#000000',
+				width: 3
+			}) }) };

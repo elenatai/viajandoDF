@@ -10,7 +10,11 @@ function runApp(){
 	initMap();
 	$(window).resize(resizeMaps);
 	readDataMetro();
-
+	var ROOT = 'https://mapathon-1337.appspot.com/_ah/api';
+	gapi.client.load('dashboardAPI', 'v1', function() {
+		loadBuses("");
+	}
+	, ROOT);
 }
 
 function initMap(){
@@ -19,23 +23,7 @@ function initMap(){
 		center: [-99.1325,19.4075],
 		zoom:12 
 	});
-	var view_northpole = new ol.View({
-		center: ol.proj.transform([37.41, 8.82], 'EPSG:4326', 'EPSG:3857'),
-		//		center: ol.proj.transform([0, 90], 'EPSG:4326', 'EPSG:3857'),
-		zoom: 4
-	});
-	var view_antarctica = new ol.View({
-		center: ol.proj.transform([37.41, 8.82], 'EPSG:4326', 'EPSG:3857'),
-		//		center: ol.proj.transform([0, -90], 'EPSG:4326', 'EPSG:3857'),
-		zoom: 4
-	});
 	
-	var projection = ol.proj.get('EPSG:4326');
-	var projectionExtent = projection.getExtent();
-	
-	var attribution = new ol.Attribution({
-		html: "<a href='https://olmozavala.com'>Olmo Zavala</a>"
-	});
 	
 	_map = new ol.Map({
 		controls: ol.control.defaults().extend([
@@ -47,6 +35,16 @@ function initMap(){
 		layers: ol3_layers,
 		view: main_view});
 	
+	$(_map.getViewport()).on('mousemove', function (e) {
+		var pixel = _map.getEventPixel(e.originalEvent);
+		 _map.forEachFeatureAtPixel(pixel, function (feature, layer) {
+			 try{
+				 feature.set("size",5);
+			 }catch(err){
+				 console.log("Not a line");
+			 }
+		});
+	});
 }
 
 function initLayers(){
@@ -59,7 +57,13 @@ function initLayers(){
 			}
 		})
 	});
+	ol3_layers[0] = new ol.layer.Tile({
+		source: new ol.source.BingMaps({
+		key: 'Your Bing Maps Key from http://bingmapsportal.com/ here',
+			imagerySet: 'Road'
+		})});
 	 */
+
 	ol3_layers[0] =  new ol.layer.Tile({
 		source: new ol.source.OSM()
 	});
