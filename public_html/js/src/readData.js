@@ -1,23 +1,70 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+var format = new ol.format.GeoJSON();
 
-globalCallback = function(geoJSON){ 
-	console.log("Inside CALLBACK");
-	displayData(geoJSON);
+var stylesLineasMetro = {'linea1': new ol.style.Style({
+			image: new ol.style.Circle({
+				radius: 7,
+				fill: new ol.style.Fill({
+					color: '#ffcc33'
+				}),
+				stroke: new ol.style.Stroke({
+				color: '#ff0000',
+				width: 2})
+			}) }),
+			'linea2': new ol.style.Style({
+			image: new ol.style.Circle({
+				radius: 7,
+				fill: new ol.style.Fill({
+					color: '#00cc33'
+				}),
+				stroke: new ol.style.Stroke({
+				color: '#ff0000',
+				width: 2})
+			}) }) };
+
+function createSource(geoJSONdata){
+	return new ol.source.Vector({
+		features: format.readFeatures(geoJSONdata,
+			{featureProjection: 'EPSG:4326'})
+			});
+}
+
+var globalCallbackMetro0 = function(geoJSONdata){ 
+
+	var currLayer = new ol.layer.Vector({ 
+		source: createSource(geoJSONdata),
+		style: stylesLineasMetro['linea1']
+	});
+
+	_map.addLayer(currLayer);
 };
 
-function readData(){
-	var url = "http://98.230.117.107:8080/geoserver/datafest/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=datafest:albergues&maxFeatures=50&outputFormat=text%2Fjavascript&FORMAT_OPTIONS=callback:globalCallback";
+var globalCallbackMetro1 = function(geoJSONdata){ 
 
-	$.ajax({
-		url: url,
-		dataType: "jsonp",
-		error: function (err) {
-		},
-		success: function () {
-		}
+	var currLayer = new ol.layer.Vector({ 
+		source: createSource(geoJSONdata),
+		style: stylesLineasMetro['linea2']
 	});
+
+	_map.addLayer(currLayer);
+};
+
+function readDataMetro(){
+
+	var layers = ['viajandodf:metro_linea1','viajandodf:metro_linea2'];
+	for(var idx = 0; idx < layers.length; idx++){
+		var url = "http://98.230.117.107:8080/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature\n\
+			&typeName="+layers[idx]+"&maxFeatures=100&outputFormat=text%2Fjavascript\n\
+			&FORMAT_OPTIONS=callback:globalCallbackMetro"+idx;
+
+		$.ajax({
+			url: url,
+			dataType: "jsonp",
+			error: function (err) {
+			},
+			success: function () {
+			}
+		});
+	}
+
+	_map.render();
 }

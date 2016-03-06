@@ -9,7 +9,7 @@ function runApp(){
 	initLayers();
 	initMap();
 	$(window).resize(resizeMaps);
-	var coord = readData();
+	var coord = readDataMetro();
 }
 
 function initMap(){

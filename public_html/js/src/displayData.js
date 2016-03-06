@@ -1,16 +1,4 @@
-function displayData(geoJSONdata, layerId, visible) {
-	var format = new ol.format.GeoJSON();
-	var vectorSource = new ol.source.Vector({
-		features: format.readFeatures(geoJSONdata,
-					{featureProjection: 'EPSG:4326'})
-			});
 
-	var currLayer = new ol.layer.Vector( { 
-		source: vectorSource }); 
-
-	_map.addLayer(currLayer);
-	_map.render();
-}
 
 var image = new ol.style.Circle({
     radius: 5,
