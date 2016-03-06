@@ -178,8 +178,27 @@ var stylesRutasMetro = {'ruta1': new ol.style.Style({
 		stroke: new ol.style.Stroke({
 			color: '018748',
 			width: 2
+		})}),
+	'ruta9': new ol.style.Style({
+		stroke: new ol.style.Stroke({
+			color: '018748',
+			width: 2
+		})}),
+	'rutaa': new ol.style.Style({
+		stroke: new ol.style.Stroke({
+			color: '018748',
+			width: 2
+		})}),
+	'rutab': new ol.style.Style({
+		stroke: new ol.style.Stroke({
+			color: '018748',
+			width: 2
+		})}),
+	'ruta12': new ol.style.Style({
+		stroke: new ol.style.Stroke({
+			color: '018748',
+			width: 2
 		})})
-
 };
 
 var stylesEcobici= {'ecobici':new ol.style.Style({

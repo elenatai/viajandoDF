@@ -11,6 +11,7 @@ function runApp(){
 	initMap();
 	$(window).resize(resizeMaps);
 	readDataMapa();
+	/*
 	readDataMetro();
 	readDataEcobici();
 	readDataMetroBus();
@@ -19,7 +20,7 @@ function runApp(){
 		loadBuses("");
 
 	}
-	, ROOT);
+	, ROOT);*/
 }
 
 function initMap(){
