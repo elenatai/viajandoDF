@@ -5,12 +5,15 @@ var layercanvas;
 
 var current_requests = new Array();
 
+
 function runApp(){
 	initLayers();
 	initMap();
 	$(window).resize(resizeMaps);
-	readDataMetro();
 	readDataMapa();
+	readDataMetro();
+	readDataEcobici();
+	readDataMetroBus();
 	var ROOT = 'https://mapathon-1337.appspot.com/_ah/api';
 	gapi.client.load('dashboardAPI', 'v1', function() {
 //		loadBuses("");
@@ -25,31 +28,69 @@ function initMap(){
 		zoom:12 
 	});
 	
-	
+	/**
+	 * Create an overlay to anchor the popup to the map.
+	overlay = new ol.Overlay( ({
+	  element: container,
+	  autoPan: true,
+	  autoPanAnimation: {
+	    duration: 250
+	  }
+	}));
+	 */
 	_map = new ol.Map({
 		controls: ol.control.defaults().extend([
 			new ol.control.ScaleLine({
 				units: 'degrees'
 			})
 		]),
+//		overlays: [overlay],
 		target: "mainMap",
 		layers: ol3_layers,
 		view: main_view});
 	
 	$(_map.getViewport()).on('mousemove', function (e) {
 		var pixel = _map.getEventPixel(e.originalEvent);
+		var coordinate = e.coordinate;
+		
 		 _map.forEachFeatureAtPixel(pixel, function (feature, layer) {
 			 try{
-				 feature.set("size",5);
+				 if(feature.getId().indexOf("metrobus") !== -1){
+					 var linea = feature.get("linea");
+					 if(nonEmpty(linea)){
+						 showMetro(linea, null, pixel);
+					 }
+				 }else{
+					 //Verify it is a bus
+					 var idRuta = feature.get("id_ruta");
+					 if(nonEmpty(idRuta)){
+						 var origen = feature.get("routes_ori");
+						 var destino = feature.get("routes_des");
+						 var costo = feature.get("fare_attri");
+						 showBus(idRuta, origen, destino, costo, pixel);
+					 }else{
+						 //Verify it is a metro
+						 var linea = feature.get("linea");
+						 if(nonEmpty(linea)){
+							 var nombre = feature.get("nombre");
+							 showMetro(linea, nombre, pixel);
+						 }else{
+							 if(feature.getId().indexOf("ecobici") !== -1){
+								 var nombre = feature.get("nombre");
+								 showEcobici(nombre, pixel);
+							 }
+						 }
+					 }
+				 }
 			 }catch(err){
 				 console.log("Not a line");
 			 }
-		});
-	});
-}
-
-function initLayers(){
-	/*
+		 });
+	 });
+ }
+ 
+ function initLayers(){
+	 /*
 	ol3_layers[0] =  new ol.layer.Tile({
 		source: new ol.source.TileWMS({
 			url: 'http://ncwms.coaps.fsu.edu/geoserver/wms',
@@ -63,19 +104,19 @@ function initLayers(){
 		key: 'Your Bing Maps Key from http://bingmapsportal.com/ here',
 			imagerySet: 'Road'
 		})});
-	 */
-
-	ol3_layers[0] =  new ol.layer.Tile({
-		source: new ol.source.OSM()
-	});
-}
-
-
-function resizeMaps(){
-	var vpw = $(window).width();
-	var vph = $(window).height();
-	
-	var mapHeight = Math.ceil(2*vph/3); 
-	$("#mainMap").css({'height':mapHeight+'px'});
-	
-}
+	  */
+	 
+	 ol3_layers[0] =  new ol.layer.Tile({
+		 source: new ol.source.OSM()
+	 });
+ }
+ 
+ 
+ function resizeMaps(){
+	 var vpw = $(window).width();
+	 var vph = $(window).height();
+	 
+	 var mapHeight = Math.ceil(2*vph/3); 
+	 $("#mainMap").css({'height':mapHeight+'px'});
+	 
+ }

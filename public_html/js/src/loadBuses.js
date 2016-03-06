@@ -81,6 +81,7 @@ function drawTrail(idxTrail){
 	var currLayer = new ol.layer.Vector({ 
 		source: tempSource,
 		style:customStyle,
+		type: '',
 		name: "yeahBabe"
 	});
 

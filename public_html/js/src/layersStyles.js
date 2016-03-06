@@ -77,6 +77,46 @@ var stylesEstacionesMetro = {'linea1': new ol.style.Style({
 				stroke: new ol.style.Stroke({
 				color: '#ff0000',
 				width: 2})
+			}) }),
+			'linea9': new ol.style.Style({
+			image: new ol.style.Circle({
+				radius: 7,
+				fill: new ol.style.Fill({
+					color: '#018748'
+				}),
+				stroke: new ol.style.Stroke({
+				color: '#ff0000',
+				width: 2})
+			}) }),
+			'lineaa': new ol.style.Style({
+			image: new ol.style.Circle({
+				radius: 7,
+				fill: new ol.style.Fill({
+					color: '#018748'
+				}),
+				stroke: new ol.style.Stroke({
+				color: '#ff0000',
+				width: 2})
+			}) }),
+			'lineab': new ol.style.Style({
+			image: new ol.style.Circle({
+				radius: 7,
+				fill: new ol.style.Fill({
+					color: '#018748'
+				}),
+				stroke: new ol.style.Stroke({
+				color: '#ff0000',
+				width: 2})
+			}) }),
+			'linea12': new ol.style.Style({
+			image: new ol.style.Circle({
+				radius: 7,
+				fill: new ol.style.Fill({
+					color: '#018748'
+				}),
+				stroke: new ol.style.Stroke({
+				color: '#ff0000',
+				width: 2})
 			}) })
                 };
 
@@ -129,4 +169,39 @@ var stylesRutasMetro = {'ruta1': new ol.style.Style({
 	
 };
 
+var stylesEcobici= {'ecobici':new ol.style.Style({
+			image: new ol.style.Circle({
+				radius: 4,
+				fill: new ol.style.Fill({
+					color: '#00FF00'
+				}),
+				stroke: new ol.style.Stroke({
+				color: '#00AA00',
+				width: 1})
+			}) })} ;
 
+var stylesRutasMetrobus = {'ruta1': new ol.style.Style({
+		stroke: new ol.style.Stroke({
+			color: '#F56394',
+			width: 2,
+			lineDash: [4, 4]
+		}) }),
+	'ruta2': new ol.style.Style({
+		stroke: new ol.style.Stroke({
+			color: '#1267AA',
+			width: 2,
+			lineDash: [4, 4]
+		}) }),
+	'ruta3': new ol.style.Style({
+		stroke: new ol.style.Stroke({
+			color: '#B19F2F',
+			width: 2,
+			lineDash: [4, 4]
+		}) }),
+	'ruta4': new ol.style.Style({
+		stroke: new ol.style.Stroke({
+			color: '#79BAB2',
+			width: 2,
+			lineDash: [4, 4]
+		}) }) 	
+};

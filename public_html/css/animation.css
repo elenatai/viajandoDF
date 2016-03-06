@@ -61,12 +61,10 @@ for the help text, the optional layers, the depth etc.*/
   font-size: 13px;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
   opacity: 0.9;
-  -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  -webkit-border-radius: 10px;
   border-radius: 10px;
-  color: #ecf2f8;
+  color: #ECF2F8;
   background-color: black;
 }
 
@@ -83,10 +81,8 @@ for the main layers, the color palettes, the calendars etc.*/
   font-size: 13px;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
   opacity: 0.9;
-  -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  -webkit-border-radius: 10px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.2);
 }

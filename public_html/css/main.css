@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
 * Base configuration, mixings and global variables
 */
@@ -57,12 +58,10 @@ for the help text, the optional layers, the depth etc.*/
   font-size: 13px;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
   opacity: 0.9;
-  -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  -webkit-border-radius: 10px;
   border-radius: 10px;
-  color: #ecf2f8;
+  color: #ECF2F8;
   background-color: black;
 }
 
@@ -79,10 +78,8 @@ for the main layers, the color palettes, the calendars etc.*/
   font-size: 13px;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
   opacity: 0.9;
-  -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  -webkit-border-radius: 10px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.2);
 }
@@ -101,4 +98,63 @@ for the main layers, the color palettes, the calendars etc.*/
 /* line 13, ../scss/main.scss */
 .btn-default, p {
   margin-top: 1em;
+}
+
+/* line 17, ../scss/main.scss */
+#popup {
+  position: absolute;
+  visible: hidden;
+}
+
+/* line 22, ../scss/main.scss */
+.ol-popup {
+  position: absolute;
+  background-color: white;
+  -webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  bottom: 12px;
+  left: -50px;
+}
+
+/* line 33, ../scss/main.scss */
+.ol-popup:after, .ol-popup:before {
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* line 42, ../scss/main.scss */
+.ol-popup:after {
+  border-top-color: white;
+  border-width: 10px;
+  left: 48px;
+  margin-left: -10px;
+}
+
+/* line 48, ../scss/main.scss */
+.ol-popup:before {
+  border-top-color: #cccccc;
+  border-width: 11px;
+  left: 48px;
+  margin-left: -11px;
+}
+
+/* line 54, ../scss/main.scss */
+.ol-popup-closer {
+  text-decoration: none;
+  position: absolute;
+  top: 2px;
+  right: 8px;
+}
+
+/* line 60, ../scss/main.scss */
+.ol-popup-closer:after {
+  content: "✖";
 }
