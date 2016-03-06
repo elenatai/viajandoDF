@@ -11,16 +11,7 @@ function runApp(){
 	initMap();
 	$(window).resize(resizeMaps);
 	readDataMapa();
-	/*
-	readDataMetro();
-	readDataEcobici();
-	readDataMetroBus();
-	var ROOT = 'https://mapathon-1337.appspot.com/_ah/api';
-	gapi.client.load('dashboardAPI', 'v1', function() {
-		loadBuses("");
 
-	}
-	, ROOT);*/
 }
 
 function initMap(){
@@ -32,23 +23,12 @@ function initMap(){
 		zoom:12 
 	});
 	
-	/**
-	 * Create an overlay to anchor the popup to the map.
-	overlay = new ol.Overlay( ({
-	  element: container,
-	  autoPan: true,
-	  autoPanAnimation: {
-	    duration: 250
-	  }
-	}));
-	 */
 	_map = new ol.Map({
 		controls: ol.control.defaults().extend([
 			new ol.control.ScaleLine({
 				units: 'degrees'
 			})
 		]),
-//		overlays: [overlay],
 		target: "mainMap",
 		layers: ol3_layers,
 		view: main_view});
@@ -62,7 +42,7 @@ function initMap(){
 				 if(feature.getId().indexOf("metrobus") !== -1){
 					 var linea = feature.get("linea");
 					 if(nonEmpty(linea)){
-						 showMetro(linea, null, pixel);
+						 showMetroBus(linea, null, pixel);
 					 }
 				 }else{
 					 //Verify it is a bus
@@ -111,9 +91,8 @@ function initMap(){
 		})});
 	  */
 	 
-	 ol3_layers[0] =  new ol.layer.Tile({
-		 source: new ol.source.OSM()
-	 });
+	 ol3_layers[0] =  new ol.layer.Tile({ source: new ol.source.OSM() });
+//	 ol3_layers[0] =  new ol.layer.Tile({source: new ol.source.MapQuest({layer: 'osm'})})
  }
  
  

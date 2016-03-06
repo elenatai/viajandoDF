@@ -242,7 +242,7 @@ var globalCallbackMetro9 = function(geoJSONdata){
 	
 	var currLayer = new ol.layer.Vector({ 
 		source: createSourcePoints(geoJSONdata),
-		style: stylesEstacionesMetro['linea9']
+		style: stylesEstacionesMetro['lineaa']
 	});
 	
 	_map.addLayer(currLayer);
@@ -251,21 +251,12 @@ var globalCallbackMetro10 = function(geoJSONdata){
 	
 	var currLayer = new ol.layer.Vector({ 
 		source: createSourcePoints(geoJSONdata),
-		style: stylesEstacionesMetro['lineaa']
-	});
-	
-	_map.addLayer(currLayer);
-};
-var globalCallbackMetro11 = function(geoJSONdata){ 
-	
-	var currLayer = new ol.layer.Vector({ 
-		source: createSourcePoints(geoJSONdata),
 		style: stylesEstacionesMetro['lineab']
 	});
 	
 	_map.addLayer(currLayer);
 };
-var globalCallbackMetro12 = function(geoJSONdata){ 
+var globalCallbackMetro11 = function(geoJSONdata){ 
 	
 	var currLayer = new ol.layer.Vector({ 
 		source: createSourcePoints(geoJSONdata),

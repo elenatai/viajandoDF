@@ -49,7 +49,6 @@ function showEcobici(nombre,pixel){
 	tooglePopup(true);
 }
 
-
 function showMetro(linea, nombre,pixel){
 	clearPopup();
 
@@ -76,9 +75,35 @@ function showMetro(linea, nombre,pixel){
 	tooglePopup(true);
 }
 
+function showMetroBus(linea, nombre,pixel){
+	clearPopup();
+
+	displayType("MetroBus");
+	if( nonEmpty(linea)){
+		d3.select("#popup-content")
+			.append("b")
+			.text("Linea: ");
+		d3.select("#popup-content")
+			.append("span")
+			.text(linea)
+			.append("br");
+	}
+	if( nonEmpty(nombre)){
+		d3.select("#popup-content")
+			.append("b")
+			.text("Nombre: ");
+		d3.select("#popup-content")
+			.append("span")
+			.text(nombre)
+			.append("br");
+	}
+	positionPopup(pixel);
+	tooglePopup(true);
+}
+
 function positionPopup(pixel){
 	$(".ol-popup").css("left",pixel[0]+"px");
-	$(".ol-popup").css("top",pixel[1]-80+"px");
+	$(".ol-popup").css("top",pixel[1]-95+"px");
 	$(".ol-popup").css("height", "125px");
 }
 

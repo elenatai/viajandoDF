@@ -2,7 +2,6 @@ var stylesEstacionesMetroLogo = new ol.style.Style({
 			image: new ol.style.Icon({
 				src:"http://98.230.117.107:8383/viajandoDF/public_html/logos/metro/LogoR.png"
 				}) });
-
 var stylesEstacionesEcobicoLogo = new ol.style.Style({
 			image: new ol.style.Icon({
 				src:"http://98.230.117.107:8383/viajandoDF/public_html/logos/BiciR.png"
@@ -11,7 +10,7 @@ var stylesEstacionesEcobicoLogo = new ol.style.Style({
 
 var stylesEstacionesMetro = {'linea1': new ol.style.Style({
 		image: new ol.style.Circle({
-			radius: 7,
+			radius: 5,
 			fill: new ol.style.Fill({
 				color: '#F56394'
 			}),
@@ -21,7 +20,7 @@ var stylesEstacionesMetro = {'linea1': new ol.style.Style({
 		})}),
 	'linea2': new ol.style.Style({
 		image: new ol.style.Circle({
-			radius: 7,
+			radius: 5,
 			fill: new ol.style.Fill({
 				color: '#1267AA'
 			}),
@@ -31,7 +30,7 @@ var stylesEstacionesMetro = {'linea1': new ol.style.Style({
 		})}),
 	'linea3': new ol.style.Style({
 		image: new ol.style.Circle({
-			radius: 7,
+			radius: 5,
 			fill: new ol.style.Fill({
 				color: '#B19F2F'
 			}),
@@ -41,7 +40,7 @@ var stylesEstacionesMetro = {'linea1': new ol.style.Style({
 		})}),
 	'linea4': new ol.style.Style({
 		image: new ol.style.Circle({
-			radius: 7,
+			radius: 5,
 			fill: new ol.style.Fill({
 				color: '#79BAB2'
 			}),
@@ -51,7 +50,7 @@ var stylesEstacionesMetro = {'linea1': new ol.style.Style({
 		})}),
 	'linea5': new ol.style.Style({
 		image: new ol.style.Circle({
-			radius: 7,
+			radius: 5,
 			fill: new ol.style.Fill({
 				color: '#FDDF01'
 			}),
@@ -61,9 +60,9 @@ var stylesEstacionesMetro = {'linea1': new ol.style.Style({
 		})}),
 	'linea6': new ol.style.Style({
 		image: new ol.style.Circle({
-			radius: 7,
+			radius: 5,
 			fill: new ol.style.Fill({
-				color: '#FF6308'
+				color: '#fe0000'
 			}),
 			stroke: new ol.style.Stroke({
 				color: '#222224',
@@ -71,7 +70,7 @@ var stylesEstacionesMetro = {'linea1': new ol.style.Style({
 		})}),
 	'linea7': new ol.style.Style({
 		image: new ol.style.Circle({
-			radius: 7,
+			radius: 5,
 			fill: new ol.style.Fill({
 				color: '#FF6308'
 			}),
@@ -81,7 +80,7 @@ var stylesEstacionesMetro = {'linea1': new ol.style.Style({
 		})}),
 	'linea8': new ol.style.Style({
 		image: new ol.style.Circle({
-			radius: 7,
+			radius: 5,
 			fill: new ol.style.Fill({
 				color: '#018748'
 			}),
@@ -91,9 +90,9 @@ var stylesEstacionesMetro = {'linea1': new ol.style.Style({
 		})}),
 	'linea9': new ol.style.Style({
 		image: new ol.style.Circle({
-			radius: 7,
+			radius: 5,
 			fill: new ol.style.Fill({
-				color: '#018748'
+				color: '#4f372d'
 			}),
 			stroke: new ol.style.Stroke({
 				color: '#222224',
@@ -101,9 +100,9 @@ var stylesEstacionesMetro = {'linea1': new ol.style.Style({
 		})}),
 	'lineaa': new ol.style.Style({
 		image: new ol.style.Circle({
-			radius: 7,
+			radius: 5,
 			fill: new ol.style.Fill({
-				color: '#018748'
+				color: '#a3277d'
 			}),
 			stroke: new ol.style.Stroke({
 				color: '#222224',
@@ -111,7 +110,7 @@ var stylesEstacionesMetro = {'linea1': new ol.style.Style({
 		})}),
 	'lineab': new ol.style.Style({
 		image: new ol.style.Circle({
-			radius: 7,
+			radius: 5,
 			fill: new ol.style.Fill({
 				color: '#018748'
 			}),
@@ -121,9 +120,9 @@ var stylesEstacionesMetro = {'linea1': new ol.style.Style({
 		})}),
 	'linea12': new ol.style.Style({
 		image: new ol.style.Circle({
-			radius: 7,
+			radius: 5,
 			fill: new ol.style.Fill({
-				color: '#018748'
+				color: '#a67c00'
 			}),
 			stroke: new ol.style.Stroke({
 				color: '#222224',
@@ -132,11 +131,10 @@ var stylesEstacionesMetro = {'linea1': new ol.style.Style({
 };
 
 
-
 var stylesRutasCamion = {'camion': new ol.style.Style({
 			 stroke: new ol.style.Stroke({
 				color: '#3BB8C4',
-				width: 1
+				width: 1.5 
 			}) }) };
 
 var stylesRutasMetro = {'ruta1': new ol.style.Style({
@@ -215,25 +213,25 @@ var stylesEcobici= {'ecobici':new ol.style.Style({
 var stylesRutasMetrobus = {'ruta1': new ol.style.Style({
 		stroke: new ol.style.Stroke({
 			color: '#F56394',
-			width: 2,
+			width: 3,
 			lineDash: [4, 4]
 		}) }),
 	'ruta2': new ol.style.Style({
 		stroke: new ol.style.Stroke({
 			color: '#1267AA',
-			width: 2,
+			width: 3,
 			lineDash: [4, 4]
 		}) }),
 	'ruta3': new ol.style.Style({
 		stroke: new ol.style.Stroke({
 			color: '#B19F2F',
-			width: 2,
+			width: 3,
 			lineDash: [4, 4]
 		}) }),
 	'ruta4': new ol.style.Style({
 		stroke: new ol.style.Stroke({
 			color: '#79BAB2',
-			width: 2,
+			width: 3,
 			lineDash: [4, 4]
 		}) }) 	
 };

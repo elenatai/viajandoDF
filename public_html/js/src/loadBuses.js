@@ -6,9 +6,9 @@
 
 var allBuses = new Array();
 var fields = "(trailId,transportType,maxTariff,schedule)";
-var maxRecLev = 3;
+var maxRecLev = 4;
 var currRecLev = 1;
-var blockSize = 10;
+var blockSize = 30;
 var trailsByBus = new Array();
 
 function loadBuses(CURSOR){
@@ -90,7 +90,7 @@ function customStyle(feature, resolution){
 	var newColor = bussesColor(feature.get("idoz"));
 //	console.log(newColor);
 	currStyle.getStroke().setColor(newColor);
-	currStyle.getStroke().setWidth(feature.get("size"));
+	currStyle.getStroke().setWidth(feature.get("size")+2);
 	return currStyle;
 
 //	return stylesRutasCamion;
