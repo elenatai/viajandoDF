@@ -45,7 +45,7 @@ function showEcobici(nombre,pixel){
 			.text(nombre)
 			.append("br");
 	}
-	$("#popup").position(pixel);
+	positionPopup(pixel);
 	tooglePopup(true);
 }
 
@@ -72,15 +72,20 @@ function showMetro(linea, nombre,pixel){
 			.text(nombre)
 			.append("br");
 	}
-	$("#popup").position(pixel);
+	positionPopup(pixel);
 	tooglePopup(true);
 }
 
+function positionPopup(pixel){
+	$(".ol-popup").css("left",pixel[0]+"px");
+	$(".ol-popup").css("top",pixel[1]-80+"px");
+	$(".ol-popup").css("height", "125px");
+}
 
 function showBus(idRuta, origen, destino, costo, pixel){
 	clearPopup();
 
-	displayType("Camion");
+	displayType("Transporte Concesionado");
 	if( nonEmpty(idRuta)){
 		d3.select("#popup-content")
 			.append("b")
@@ -117,7 +122,7 @@ function showBus(idRuta, origen, destino, costo, pixel){
 			.text(costo)
 			.append("br");
 	}
-	$("#popup").position(pixel);
+	positionPopup(pixel);
 	tooglePopup(true);
 }
 

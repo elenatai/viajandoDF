@@ -12,8 +12,6 @@ var blockSize = 10;
 var trailsByBus = new Array();
 
 function loadBuses(CURSOR){
-
-
 	if(_.isUndefined(CURSOR)){
 		CURSOR = "";
 	}
@@ -27,7 +25,6 @@ function loadBuses(CURSOR){
 			var data = JSON.parse(json.response);
 
 			allBuses = allBuses.concat(data.trails);
-
 //			console.log(allBuses);
 //			console.log(data.cursor);
 			if(currRecLev < maxRecLev){
@@ -82,7 +79,6 @@ function drawTrail(idxTrail){
 		source: tempSource,
 		style:customStyle,
 		type: '',
-		name: "yeahBabe"
 	});
 
 	_map.addLayer(currLayer);
@@ -96,6 +92,8 @@ function customStyle(feature, resolution){
 	currStyle.getStroke().setColor(newColor);
 	currStyle.getStroke().setWidth(feature.get("size"));
 	return currStyle;
+
+//	return stylesRutasCamion;
 }
 
 function customStyleHighLighted(feature, resolution){
@@ -109,7 +107,7 @@ function customStyleHighLighted(feature, resolution){
 }
 
 function loadTrailPoints(idxTrail, trailId,CURSOR){
-	var general_url = "https://mapaton-public.appspot.com/_ah/api/dashboardAPI/v1/getTrailRawPoints?fields=cursor,points";
+	var general_url = "https://mapaton-public.appspot.com/_ah/api/dashboardAPI/v1/getTrailSnappedPoints?fields=cursor,points";
 	d3.xhr(general_url)
 		.header("Content-Type","application/json")
 		.post(JSON.stringify({trailId: trailId, numberOfElements: blockSize, cursor:CURSOR}),

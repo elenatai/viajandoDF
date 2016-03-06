@@ -41,6 +41,7 @@ function readDataMetro(){
 		var url = "http://98.230.117.107:8080/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature\n\
 			&typeName="+estacionesMetro[idx]+"&maxFeatures=100&outputFormat=text%2Fjavascript\n\
 			&FORMAT_OPTIONS=callback:globalCallbackMetro"+idx;
+//			&FORMAT_OPTIONS=callback:globalCallbackMetroGenerico";
 		
 		$.ajax({
 			url: url,
@@ -147,6 +148,14 @@ var drawStyleLines = function(feature, resolution) {
 			})
 		})];
 };
+
+var globalCallbackMetroGenerico = function(geoJSONdata){ 
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourcePoints(geoJSONdata),
+		style: stylesEstacionesMetroLogo
+	});
+	_map.addLayer(currLayer);
+}
 
 var globalCallbackMetro0 = function(geoJSONdata){ 
 	var currLayer = new ol.layer.Vector({ 
@@ -364,13 +373,24 @@ var globalCallbackRutas_mapathon2 = function(geoJSONdata){
 	});
 	
 	_map.addLayer(currLayer);
+
+	readDataMetro();
+	readDataEcobici();
+	readDataMetroBus();
+	var ROOT = 'https://mapathon-1337.appspot.com/_ah/api';
+	gapi.client.load('dashboardAPI', 'v1', function() {
+//		loadBuses("");
+	}
+	, ROOT);
+
 };
 
 var globalCallbackEcobici0 = function(geoJSONdata){ 
 	
 	var currLayer = new ol.layer.Vector({ 
 		source: createSourcePointsCamiones(geoJSONdata),
-		style: stylesEcobici['ecobici']
+		style: stylesEstacionesEcobicoLogo
+//		style: stylesEcobici['ecobici']
 	});
 	
 	_map.addLayer(currLayer);

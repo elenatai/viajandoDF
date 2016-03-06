@@ -16,12 +16,15 @@ function runApp(){
 	readDataMetroBus();
 	var ROOT = 'https://mapathon-1337.appspot.com/_ah/api';
 	gapi.client.load('dashboardAPI', 'v1', function() {
-//		loadBuses("");
+		loadBuses("");
+
 	}
 	, ROOT);
 }
 
 function initMap(){
+
+	resizeMaps();
 	main_view = new ol.View({
 		projection: 'EPSG:4326',
 		center: [-99.1325,19.4075],
@@ -87,6 +90,7 @@ function initMap(){
 			 }
 		 });
 	 });
+
  }
  
  function initLayers(){
@@ -116,7 +120,7 @@ function initMap(){
 	 var vpw = $(window).width();
 	 var vph = $(window).height();
 	 
-	 var mapHeight = Math.ceil(2*vph/3); 
-	 $("#mainMap").css({'height':mapHeight+'px'});
+	 var mapHeight = vph-180;
+	 $("#mainMap").css("height",mapHeight+'px');
 	 
  }
