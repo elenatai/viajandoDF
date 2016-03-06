@@ -50,8 +50,6 @@ function showEcobici(nombre,pixel){
 }
 
 function showMetro(linea, nombre,pixel){
-	clearPopup();
-
 	displayType("Metro");
 	if( nonEmpty(linea)){
 		d3.select("#popup-content")
@@ -76,8 +74,6 @@ function showMetro(linea, nombre,pixel){
 }
 
 function showMetroBus(linea, nombre,pixel){
-	clearPopup();
-
 	displayType("MetroBus");
 	if( nonEmpty(linea)){
 		d3.select("#popup-content")
@@ -102,14 +98,12 @@ function showMetroBus(linea, nombre,pixel){
 }
 
 function positionPopup(pixel){
+	 var vph = $(window).height();
 	$(".ol-popup").css("left",pixel[0]+"px");
-	$(".ol-popup").css("top",pixel[1]-95+"px");
-	$(".ol-popup").css("height", "125px");
+	$(".ol-popup").css("bottom",vph-pixel[1]-30+"px");
 }
 
 function showBus(idRuta, origen, destino, costo, pixel){
-	clearPopup();
-
 	displayType("Transporte Concesionado");
 	if( nonEmpty(idRuta)){
 		d3.select("#popup-content")
@@ -152,6 +146,7 @@ function showBus(idRuta, origen, destino, costo, pixel){
 }
 
 function clearPopup(){
+	$("#popup").hide();
 	$("#popup-content").text("");
 }
 

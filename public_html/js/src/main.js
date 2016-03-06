@@ -37,6 +37,7 @@ function initMap(){
 		var pixel = _map.getEventPixel(e.originalEvent);
 		var coordinate = e.coordinate;
 		
+		clearPopup();
 		 _map.forEachFeatureAtPixel(pixel, function (feature, layer) {
 			 try{
 				 if(feature.getId().indexOf("metrobus") !== -1){

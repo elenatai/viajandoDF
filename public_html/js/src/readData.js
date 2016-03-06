@@ -98,7 +98,7 @@ function readDataMetroBus(){
 	for(var idx = 0; idx < rutasMapa.length; idx++){
 		var url = "http://98.230.117.107:8080/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature\n\
 			&typeName="+rutasMapa[idx]+"&maxFeatures=2000&outputFormat=text%2Fjavascript\n\
-			&FORMAT_OPTIONS=callback:globalCallbackMetrobus"+idx;
+			&FORMAT_OPTIONS=callback:globalCallbackMetrobusRuta"+idx;
 		
 		$.ajax({
 			url: url,
@@ -110,6 +110,60 @@ function readDataMetroBus(){
 		});
 	
 	}
+	rutasMapa= ['metrobus_linea1','metrobus_linea2','metrobus_linea3','metrobus_linea4'];
+	for(var idx = 0; idx < rutasMapa.length; idx++){
+		var url = "http://98.230.117.107:8080/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature\n\
+			&typeName="+rutasMapa[idx]+"&maxFeatures=2000&outputFormat=text%2Fjavascript\n\
+			&FORMAT_OPTIONS=callback:globalCallbackMetrobusEstacionesGenerico";
+//			&FORMAT_OPTIONS=callback:globalCallbackMetrobus"+idx;
+		
+		$.ajax({
+			url: url,
+			dataType: "jsonp",
+			error: function (err) {
+			},
+			success: function () {
+			}
+		});
+	
+	}
+
+	_map.render();
+}
+function readDataTrenLigero(){
+	var rutasMapa = ['trenligero_ruta'];
+	for(var idx = 0; idx < rutasMapa.length; idx++){
+		var url = "http://98.230.117.107:8080/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature\n\
+			&typeName="+rutasMapa[idx]+"&maxFeatures=2000&outputFormat=text%2Fjavascript\n\
+			&FORMAT_OPTIONS=callback:globalCallbackTrenLigeroRuta";
+		
+		$.ajax({
+			url: url,
+			dataType: "jsonp",
+			error: function (err) {
+			},
+			success: function () {
+			}
+		});
+	
+	}
+	rutasMapa= ['trenligero'];
+	for(var idx = 0; idx < rutasMapa.length; idx++){
+		var url = "http://98.230.117.107:8080/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature\n\
+			&typeName="+rutasMapa[idx]+"&maxFeatures=2000&outputFormat=text%2Fjavascript\n\
+			&FORMAT_OPTIONS=callback:globalCallbackTrenLigero";
+		
+		$.ajax({
+			url: url,
+			dataType: "jsonp",
+			error: function (err) {
+			},
+			success: function () {
+			}
+		});
+	
+	}
+
 	_map.render();
 }
 
@@ -368,6 +422,7 @@ var globalCallbackRutas_mapathon2 = function(geoJSONdata){
 	readDataMetro();
 	readDataEcobici();
 	readDataMetroBus();
+	readDataTrenLigero();
 	var ROOT = 'https://mapathon-1337.appspot.com/_ah/api';
 	gapi.client.load('dashboardAPI', 'v1', function() {
 //		loadBuses("");
@@ -395,10 +450,47 @@ function createSourcePointsCamiones(geoJSONdata){
 	return tempSource;
 }
 
-var globalCallbackMetrobus0 = function(geoJSONdata){ 
+var globalCallbackMetrobusRuta0 = function(geoJSONdata){ 
 	var currLayer = new ol.layer.Vector({ 
 		source: createSourceLines(geoJSONdata),
-		style: stylesRutasMetrobus['ruta1']
+		style: stylesRutasMetrobusRuta['ruta1']
+	});
+	
+	_map.addLayer(currLayer);
+
+};
+var globalCallbackMetrobusRuta1 = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourceLines(geoJSONdata),
+		style: stylesRutasMetrobusRuta['ruta2']
+	});
+	
+	_map.addLayer(currLayer);
+};
+var globalCallbackMetrobusRuta2 = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourceLines(geoJSONdata),
+		style: stylesRutasMetrobusRuta['ruta3']
+	});
+	
+	_map.addLayer(currLayer);
+};
+var globalCallbackMetrobusRuta3 = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourceLines(geoJSONdata),
+		style: stylesRutasMetrobusRuta['ruta4']
+	});
+	
+	_map.addLayer(currLayer);
+};
+
+var globalCallbackMetrobus0 = function(geoJSONdata){ 
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourcePoints(geoJSONdata),
+		style: stylesEstacionesMetrobus['linea1']
 	});
 	
 	_map.addLayer(currLayer);
@@ -407,8 +499,8 @@ var globalCallbackMetrobus0 = function(geoJSONdata){
 var globalCallbackMetrobus1 = function(geoJSONdata){ 
 	
 	var currLayer = new ol.layer.Vector({ 
-		source: createSourceLines(geoJSONdata),
-		style: stylesRutasMetrobus['ruta2']
+		source: createSourcePoints(geoJSONdata),
+		style: stylesEstacionesMetrobus['linea2']
 	});
 	
 	_map.addLayer(currLayer);
@@ -416,8 +508,8 @@ var globalCallbackMetrobus1 = function(geoJSONdata){
 var globalCallbackMetrobus2 = function(geoJSONdata){ 
 	
 	var currLayer = new ol.layer.Vector({ 
-		source: createSourceLines(geoJSONdata),
-		style: stylesRutasMetrobus['ruta3']
+		source: createSourcePoints(geoJSONdata),
+		style: stylesEstacionesMetrobus['linea3']
 	});
 	
 	_map.addLayer(currLayer);
@@ -425,8 +517,37 @@ var globalCallbackMetrobus2 = function(geoJSONdata){
 var globalCallbackMetrobus3 = function(geoJSONdata){ 
 	
 	var currLayer = new ol.layer.Vector({ 
-		source: createSourceLines(geoJSONdata),
-		style: stylesRutasMetrobus['ruta4']
+		source: createSourcePoints(geoJSONdata),
+		style: stylesEstacionesMetrobus['linea4']
+	});
+	
+	_map.addLayer(currLayer);
+};
+
+var globalCallbackMetrobusEstacionesGenerico = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourcePoints(geoJSONdata),
+		style: stylesEstacionesMetrobusLogo
+	});
+	
+	_map.addLayer(currLayer);
+};
+
+var globalCallbackTrenLigeroRuta = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourcePoints(geoJSONdata),
+		style: stylesRutasTrenLigero
+	});
+	
+	_map.addLayer(currLayer);
+};
+
+var globalCallbackTrenLigero= function(geoJSONdata){ 
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourcePoints(geoJSONdata),
+		style: stylesEstacionesTrenLigeroLogo 
 	});
 	
 	_map.addLayer(currLayer);
