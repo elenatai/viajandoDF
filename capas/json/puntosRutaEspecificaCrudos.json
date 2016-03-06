@@ -1,0 +1,207 @@
+{
+ "cursor": "ClYKIAoTcG9pbnREYXRhLnRpbWVTdGFtcBIJCOCC-6uc98oCEi5qEHN-bWFwYXRvbi1wdWJsaWNyGgsSDVJhd1RyYWlsUG9pbnQYgICAhJ7y6QoMGAAgAA",
+ "points": [
+  {
+   "location": {
+    "latitude": 19.3924623,
+    "longitude": -99.1724361,
+    "radius": 20.0
+   },
+   "timeStamp": {
+    "time": {
+     "hour": 5,
+     "minute": 56,
+     "second": 40
+    },
+    "date": {
+     "day": 14,
+     "month": 2,
+     "year": 2016
+    }
+   },
+   "position": 0
+  },
+  {
+   "location": {
+    "latitude": 19.3924856,
+    "longitude": -99.1724389,
+    "radius": 20.0
+   },
+   "timeStamp": {
+    "time": {
+     "hour": 5,
+     "minute": 59,
+     "second": 3
+    },
+    "date": {
+     "day": 14,
+     "month": 2,
+     "year": 2016
+    }
+   },
+   "position": 0
+  },
+  {
+   "location": {
+    "latitude": 19.3927886,
+    "longitude": -99.1732471,
+    "radius": 20.0
+   },
+   "timeStamp": {
+    "time": {
+     "hour": 5,
+     "minute": 59,
+     "second": 23
+    },
+    "date": {
+     "day": 14,
+     "month": 2,
+     "year": 2016
+    }
+   },
+   "position": 0
+  },
+  {
+   "location": {
+    "latitude": 19.3934359,
+    "longitude": -99.1758947,
+    "radius": 20.0
+   },
+   "timeStamp": {
+    "time": {
+     "hour": 6,
+     "minute": 0,
+     "second": 55
+    },
+    "date": {
+     "day": 14,
+     "month": 2,
+     "year": 2016
+    }
+   },
+   "position": 0
+  },
+  {
+   "location": {
+    "latitude": 19.3934272,
+    "longitude": -99.1759049,
+    "radius": 20.0
+   },
+   "timeStamp": {
+    "time": {
+     "hour": 6,
+     "minute": 1,
+     "second": 14
+    },
+    "date": {
+     "day": 14,
+     "month": 2,
+     "year": 2016
+    }
+   },
+   "position": 0
+  },
+  {
+   "location": {
+    "latitude": 19.3930773,
+    "longitude": -99.1765199,
+    "radius": 20.0
+   },
+   "timeStamp": {
+    "time": {
+     "hour": 6,
+     "minute": 2,
+     "second": 1
+    },
+    "date": {
+     "day": 14,
+     "month": 2,
+     "year": 2016
+    }
+   },
+   "position": 0
+  },
+  {
+   "location": {
+    "latitude": 19.3925766,
+    "longitude": -99.1775373,
+    "radius": 20.0
+   },
+   "timeStamp": {
+    "time": {
+     "hour": 6,
+     "minute": 2,
+     "second": 42
+    },
+    "date": {
+     "day": 14,
+     "month": 2,
+     "year": 2016
+    }
+   },
+   "position": 0
+  },
+  {
+   "location": {
+    "latitude": 19.3913139,
+    "longitude": -99.1820916,
+    "radius": 20.0
+   },
+   "timeStamp": {
+    "time": {
+     "hour": 6,
+     "minute": 5,
+     "second": 55
+    },
+    "date": {
+     "day": 14,
+     "month": 2,
+     "year": 2016
+    }
+   },
+   "position": 0
+  },
+  {
+   "location": {
+    "latitude": 19.3912882,
+    "longitude": -99.1836642,
+    "radius": 20.0
+   },
+   "timeStamp": {
+    "time": {
+     "hour": 6,
+     "minute": 6,
+     "second": 37
+    },
+    "date": {
+     "day": 14,
+     "month": 2,
+     "year": 2016
+    }
+   },
+   "position": 0
+  },
+  {
+   "location": {
+    "latitude": 19.3911001,
+    "longitude": -99.1866582,
+    "radius": 20.0
+   },
+   "timeStamp": {
+    "time": {
+     "hour": 6,
+     "minute": 9,
+     "second": 25
+    },
+    "date": {
+     "day": 14,
+     "month": 2,
+     "year": 2016
+    }
+   },
+   "position": 0
+  }
+ ],
+ "kind": "dashboardAPI#resourcesItem",
+ "etag": "\"SYqucoTX53UfKvGy9awhyF4QHSs/WyfbEgwaWxs7nQ95IgsiQh4MrSA\""
+}

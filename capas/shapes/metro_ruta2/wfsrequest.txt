@@ -1,0 +1,1 @@
+http://132.248.8.238:8080/geoservermex/mextrans/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=mextrans:metro_ruta2&maxFeatures=50&outputFormat=SHAPE-ZIP
