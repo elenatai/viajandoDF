@@ -8,7 +8,6 @@ function createSourcePoints(geoJSONdata){
 
 	return tempSource;
 }
-
 function createSourceLines(geoJSONdata){
 	var tempSource = new ol.source.Vector({
 		features: format.readFeatures(geoJSONdata,
@@ -18,13 +17,12 @@ function createSourceLines(geoJSONdata){
 	return tempSource;
 }
 
-
 function readDataMetro(){
 
-	var rutasMetro = ['viajandodf:metro_ruta1','viajandodf:metro_ruta2'];
+	var rutasMetro = ['viajandodf:metro_ruta1','viajandodf:metro_ruta2','viajandodf:metro_ruta3','viajandodf:metro_ruta4','viajandodf:metro_ruta5','viajandodf:metro_ruta6','viajandodf:metro_ruta7','viajandodf:metro_ruta8'];
 	for(var idx = 0; idx < rutasMetro.length; idx++){
 		var url = "http://98.230.117.107:8080/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature\n\
-			&typeName="+rutasMetro[idx]+"&maxFeatures=100&outputFormat=text%2Fjavascript\n\
+			&typeName="+rutasMetro[idx]+"&maxFeatures=1000&outputFormat=text%2Fjavascript\n\
 			&FORMAT_OPTIONS=callback:globalCallbackMetroRuta"+idx;
 		
 		$.ajax({
@@ -36,8 +34,7 @@ function readDataMetro(){
 			}
 		});
 	}
-	
-	var estacionesMetro = ['viajandodf:metro_linea1','viajandodf:metro_linea2'];
+        var estacionesMetro = ['viajandodf:metro_linea1','viajandodf:metro_linea2','viajandodf:metro_linea3','viajandodf:metro_linea4','viajandodf:metro_linea5','viajandodf:metro_linea6','viajandodf:metro_linea7','viajandodf:metro_linea8'];
 	for(var idx = 0; idx < estacionesMetro.length; idx++){
 		var url = "http://98.230.117.107:8080/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature\n\
 			&typeName="+estacionesMetro[idx]+"&maxFeatures=100&outputFormat=text%2Fjavascript\n\
@@ -55,7 +52,25 @@ function readDataMetro(){
 
 	_map.render();
 }
-
+function readDataMapa(){
+	var rutasMapa = ['rutas_mapathon3'];
+	for(var idx = 0; idx < rutasMapa.length; idx++){
+		var url = "http://98.230.117.107:8080/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature\n\
+			&typeName="+rutasMapa[idx]+"&maxFeatures=2000&outputFormat=text%2Fjavascript\n\
+			&FORMAT_OPTIONS=callback:globalCallbackRutas_mapathon2";
+		
+		$.ajax({
+			url: url,
+			dataType: "jsonp",
+			error: function (err) {
+			},
+			success: function () {
+			}
+		});
+	
+	}
+	_map.render();
+}
 
 var drawStylePoints = function(feature, resolution) {
 	var color = 'green';
@@ -74,7 +89,6 @@ var drawStylePoints = function(feature, resolution) {
 				width: 2})
 			}) }) ];
 };
-
 var drawStyleLines = function(feature, resolution) {
 	var color = 'green';
 	if (feature.getGeometry().getCoordinates().length > 2) {
@@ -112,6 +126,70 @@ var globalCallbackMetro1 = function(geoJSONdata){
 	
 	_map.addLayer(currLayer);
 };
+var globalCallbackMetro2 = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourcePoints(geoJSONdata),
+		style: stylesEstacionesMetro['linea3']
+	});
+	
+	_map.addLayer(currLayer);
+};
+var globalCallbackMetro3 = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourcePoints(geoJSONdata),
+		style: stylesEstacionesMetro['linea4']
+	});
+	
+	_map.addLayer(currLayer);
+};
+var globalCallbackMetro4 = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourcePoints(geoJSONdata),
+		style: stylesEstacionesMetro['linea5']
+	});
+	
+	_map.addLayer(currLayer);
+};
+var globalCallbackMetro5 = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourcePoints(geoJSONdata),
+		style: stylesEstacionesMetro['linea6']
+	});
+	
+	_map.addLayer(currLayer);
+};
+var globalCallbackMetro6 = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourcePoints(geoJSONdata),
+		style: stylesEstacionesMetro['linea7']
+	});
+	
+	_map.addLayer(currLayer);
+};
+var globalCallbackMetro7 = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourcePoints(geoJSONdata),
+		style: stylesEstacionesMetro['linea8']
+	});
+	
+	_map.addLayer(currLayer);
+};
+var globalCallbackMetro8 = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourcePoints(geoJSONdata),
+		style: stylesEstacionesMetro['linea9']
+	});
+	
+	_map.addLayer(currLayer);
+};
+    
 var globalCallbackMetroRuta0 = function(geoJSONdata){ 
 	var currLayer = new ol.layer.Vector({ 
 		source: createSourceLines(geoJSONdata),
@@ -129,3 +207,94 @@ var globalCallbackMetroRuta1 = function(geoJSONdata){
 	
 	_map.addLayer(currLayer);
 };
+var globalCallbackMetroRuta2 = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourceLines(geoJSONdata),
+		style: stylesRutasMetro['ruta3']
+	});
+	
+	_map.addLayer(currLayer);
+};
+var globalCallbackMetroRuta3 = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourceLines(geoJSONdata),
+		style: stylesRutasMetro['ruta4']
+	});
+	
+	_map.addLayer(currLayer);
+};
+var globalCallbackMetroRuta4 = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourceLines(geoJSONdata),
+		style: stylesRutasMetro['ruta5']
+	});
+	
+	_map.addLayer(currLayer);
+};
+var globalCallbackMetroRuta5 = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourceLines(geoJSONdata),
+		style: stylesRutasMetro['ruta6']
+	});
+	
+	_map.addLayer(currLayer);
+};
+var globalCallbackMetroRuta6 = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourceLines(geoJSONdata),
+		style: stylesRutasMetro['ruta7']
+	});
+	
+	_map.addLayer(currLayer);
+};
+var globalCallbackMetroRuta7 = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourceLines(geoJSONdata),
+		style: stylesRutasMetro['ruta6']
+	});
+	
+	_map.addLayer(currLayer);
+};
+var globalCallbackMetroRuta8 = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourceLines(geoJSONdata),
+		style: stylesRutasMetro['ruta7']
+	});
+	
+	_map.addLayer(currLayer);
+};
+var globalCallbackMetroRuta9 = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourceLines(geoJSONdata),
+		style: stylesRutasMetro['ruta8']
+	});
+	
+	_map.addLayer(currLayer);
+};
+
+var globalCallbackRutas_mapathon2 = function(geoJSONdata){ 
+	
+	var currLayer = new ol.layer.Vector({ 
+		source: createSourcePointsCamiones(geoJSONdata),
+		style: stylesRutasCamion['camion']
+	});
+	
+	_map.addLayer(currLayer);
+};
+
+function createSourcePointsCamiones(geoJSONdata){
+	var tempSource = new ol.source.Vector({
+		features: format.readFeatures(geoJSONdata,
+		{featureProjection: 'EPSG:4326'})
+	});
+
+	return tempSource;
+}

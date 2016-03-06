@@ -10,9 +10,10 @@ function runApp(){
 	initMap();
 	$(window).resize(resizeMaps);
 	readDataMetro();
+	readDataMapa();
 	var ROOT = 'https://mapathon-1337.appspot.com/_ah/api';
 	gapi.client.load('dashboardAPI', 'v1', function() {
-		loadBuses("");
+//		loadBuses("");
 	}
 	, ROOT);
 }
