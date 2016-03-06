@@ -120,7 +120,7 @@ var stylesRutasMetro = {'ruta1': new ol.style.Style({
 			}) }),
 			'ruta8': new ol.style.Style({
 			 stroke: new ol.style.Stroke({
-				color: '#FDDF01',
+				color: '018748',
 				width: 2
 			}) })
                    
